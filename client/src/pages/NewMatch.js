@@ -88,7 +88,7 @@ export default function NewMatch({ playersList }) {
     function full(mP) {
         for (let i = 0; i < mP.length; i++) {
             let p = mP[i]
-            if (!(p.completeName && p.playerId && p.vote && p.comment))
+            if (!(p.completeName && p.playerId && (p.vote !== null) && p.comment))
                 return false
         }
         return true
