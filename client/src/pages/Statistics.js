@@ -156,8 +156,8 @@ export default function Statistics({ playersList, matchList }) {
                     <Grid container spacing={1} columns={{ xs: 1, sm: 12, md: 12 }} sx={{ display: 'flex', justifyContent: 'center', flex: 'wrap', margin: '2%' }}>
                         <Grid xs={8}>
                             <Paper elevation={5} sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-                                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '6%', paddingBottom: '6%', marginLeft: '2%', fontSize: 20, flexWrap: 'wrap' }}><span className="toxicspan">Il giocatore più TOXIC:</span><span className="toxicspan2">{toxic.name} {toxic.surname} ({toxic.nickname})</span></Box>
-                                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '6%', paddingBottom: '6%', marginLeft: '4%', fontSize: 20, flexWrap: 'wrap' }}><span className="mvpspan">Il giocatore con più MVP:</span><span className="mvpspan2">{mvp.name} {mvp.surname} ({mvp.nickname})</span></Box>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '6%', paddingBottom: '6%', marginLeft: '2%', fontSize: 20, flexWrap: 'wrap' }}><span className="toxicspan">Il giocatore più TOXIC:</span><span className="toxicspan2"><a href={`/${toxic._id}`}>{toxic.name} {toxic.surname} ({toxic.nickname})</a></span></Box>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '6%', paddingBottom: '6%', marginLeft: '4%', fontSize: 20, flexWrap: 'wrap' }}><span className="mvpspan">Il giocatore con più MVP:</span><span className="mvpspan2"><a href={`/${mvp._id}`}>{mvp.name} {mvp.surname} ({mvp.nickname})</a></span></Box>
                             </Paper>
                         </Grid>
                     </Grid>
