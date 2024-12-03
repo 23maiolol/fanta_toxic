@@ -60,7 +60,7 @@ export default function NewPlayer({ player }) {
             axios(
                 {
                     method: 'post',
-                    url: 'http://localhost:3005/player/new',
+                    url: `${process.env.REACT_APP_ENDPOINT}/player/new`,
                     data: player
                 }
             )

@@ -67,9 +67,9 @@ function App() {
 
   useEffect(() => {
     if (!matchList)
-      axios.get('http://localhost:3005/match/list').then(response => { console.log('r1'); setMatchList(response.data) }).catch(e => setE(true))
+      axios.get(`${process.env.REACT_APP_ENDPOINT}/match/list`).then(response => { console.log('r1'); setMatchList(response.data) }).catch(e => setE(true))
     if (!playersList)
-      axios.get('http://localhost:3005/player/list').then(response => { console.log('r2'); setPlayerList(response.data) }).catch(e => setE(true))
+      axios.get(`${process.env.REACT_APP_ENDPOINT}/player/list`).then(response => { console.log('r2'); setPlayerList(response.data) }).catch(e => setE(true))
     if (playersList && matchList)
       setLoading(false)
     else

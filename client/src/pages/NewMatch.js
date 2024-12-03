@@ -136,7 +136,7 @@ export default function NewMatch({ playersList }) {
             axios(
                 {
                     method: 'post',
-                    url: 'http://localhost:3005/match/new',
+                    url: `${process.env.REACT_APP_ENDPOINT}/match/new`,
                     data: match
                 }
             )

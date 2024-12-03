@@ -126,42 +126,54 @@ export default function Statistics({ playersList, matchList }) {
     }, [playersList])
 
 
-
-    return (
-        <div>
+    if (playersList.length)
+        return (
             <div>
-                <NavBar></NavBar>
+                <div>
+                    <NavBar></NavBar>
+                </div>
+                <div>
+                    <Grid container spacing={1} columns={{ xs: 1, sm: 12, md: 12 }} sx={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center' }}>
+                        <Grid xs={5} sx={{ margin: '2%', height: '100%' }}>
+                            <Paper elevation={5}>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '2%', paddingBottom: '2%', fontSize: 'larger' }}>Migliori 5</Box>
+                                <Divider variant="middle"></Divider>
+                                <BChart avList={top5.map((player) => player.votes)} playerList={top5.map((player) => `${player.nickname}`)} color={'#59a14f'}>
+
+                                </BChart>
+                            </Paper>
+                        </Grid>
+                        <Grid xs={5} sx={{ margin: '2%', height: '100%' }}>
+                            <Paper elevation={5}>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '2%', paddingBottom: '2%', fontSize: 'larger' }}>Peggiori 5</Box>
+                                <Divider variant="middle"></Divider>
+                                <BChart avList={worst5.map((player) => player.votes)} playerList={worst5.map((player) => `${player.nickname}`)} color={'#e15759'}>
+
+                                </BChart>
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={1} columns={{ xs: 1, sm: 12, md: 12 }} sx={{ display: 'flex', justifyContent: 'center', flex: 'wrap', margin: '2%' }}>
+                        <Grid xs={8}>
+                            <Paper elevation={5} sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '6%', paddingBottom: '6%', marginLeft: '2%', fontSize: 20, flexWrap: 'wrap' }}><span className="toxicspan">Il giocatore più TOXIC:</span><span className="toxicspan2">{toxic.name} {toxic.surname} ({toxic.nickname})</span></Box>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '6%', paddingBottom: '6%', marginLeft: '4%', fontSize: 20, flexWrap: 'wrap' }}><span className="mvpspan">Il giocatore con più MVP:</span><span className="mvpspan2">{mvp.name} {mvp.surname} ({mvp.nickname})</span></Box>
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                </div>
             </div>
+        );
+        else
+        return (
             <div>
-                <Grid container spacing={1} columns={{ xs: 1, sm: 12, md: 12 }} sx={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center' }}>
-                    <Grid xs={5} sx={{ margin: '2%', height: '100%' }}>
-                        <Paper elevation={5}>
-                            <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '2%', paddingBottom: '2%', fontSize: 'larger' }}>Migliori 5</Box>
-                            <Divider variant="middle"></Divider>
-                            <BChart avList={top5.map((player) => player.votes)} playerList={top5.map((player) => `${player.nickname}`)} color={'#59a14f'}>
-
-                            </BChart>
-                        </Paper>
-                    </Grid>
-                    <Grid xs={5} sx={{ margin: '2%', height: '100%' }}>
-                        <Paper elevation={5}>
-                            <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '2%', paddingBottom: '2%', fontSize: 'larger' }}>Peggiori 5</Box>
-                            <Divider variant="middle"></Divider>
-                            <BChart avList={worst5.map((player) => player.votes)} playerList={worst5.map((player) => `${player.nickname}`)} color={'#e15759'}>
-
-                            </BChart>
-                        </Paper>
-                    </Grid>
-                </Grid>
-                <Grid container spacing={1} columns={{ xs: 1, sm: 12, md: 12 }} sx={{ display: 'flex', justifyContent: 'center', flex: 'wrap', margin: '2%' }}>
-                    <Grid xs={8}>
-                        <Paper elevation={5} sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-                            <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '6%', paddingBottom: '6%', marginLeft: '2%', fontSize: 20, flexWrap: 'wrap' }}><span className="toxicspan">Il giocatore più TOXIC:</span><span className="toxicspan2">{toxic.name} {toxic.surname} ({toxic.nickname})</span></Box>
-                            <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', paddingTop: '6%', paddingBottom: '6%', marginLeft: '4%', fontSize: 20, flexWrap: 'wrap' }}><span className="mvpspan">Il giocatore con più MVP:</span><span className="mvpspan2">{mvp.name} {mvp.surname} ({mvp.nickname})</span></Box>
-                        </Paper>
-                    </Grid>
-                </Grid>
-            </div>
-        </div>
-    );
+                <div>
+                    <NavBar></NavBar>
+                </div>
+                <div>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10%', color: 'primary.700', fontSize: 'larger', fontWeight: '600' }}>
+                        Nessuna statistica presente
+                    </Box>
+                </div>
+            </div>)
 }
