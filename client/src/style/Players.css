@@ -1,0 +1,14 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#table-container{
+    margin: 3%;
+}
+
+#search-bar{
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+}

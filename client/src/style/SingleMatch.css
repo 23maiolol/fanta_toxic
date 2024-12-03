@@ -1,0 +1,18 @@
+.comment{
+    overflow: hidden
+}
+
+.mprop{
+    margin-top: 2%;
+}
+
+.mtag{
+    font-weight: 700;
+    color:#342cb5
+}
+
+.mvalue{
+    font-weight: 400;
+    padding-left: 1%;
+    color: 'black';
+}

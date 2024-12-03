@@ -1,0 +1,66 @@
+#form-container {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.player-container {
+    width: 100%;
+    display: flex;
+    padding-top: 1% !important;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+
+textarea {
+    overflow-y: scroll !important;
+}
+
+#form-container {
+    margin: 5%
+}
+
+.css-1tkmop-MuiFormLabel-root-MuiInputLabel-root {
+    padding-top: 3% !important;
+}
+
+.middle-bars {
+    padding-right: 3%;
+    padding-top: 1.5em;
+    padding-bottom: 1%;
+}
+
+.left-bar {
+    padding-top: 1.5em;
+    padding-right: 3%;
+}
+
+
+.text-cont {
+    flex-grow: 2;
+}
+
+#toxic-mvp-cont {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.mvp {
+    margin-right: 5%;
+    margin-bottom: 3%;
+}
+
+#password {
+    margin-top: 3%;
+    display: flex;
+    justify-content: left;
+}
+
+#date-picker {
+    margin-top: 3%;
+}
+
+#date-picker > div{
+    background-color: white;
+}

@@ -1,0 +1,23 @@
+#form-container{
+    margin: 8% 20% 10% 20%;
+}
+
+#form-container > div{
+    padding-top: 3%
+}
+
+#radio-container{
+    display: grid;
+    justify-content: center;
+} 
+
+#button-container{
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+}
+
+#plpassword {
+    display: flex;
+    justify-content: center;
+}
