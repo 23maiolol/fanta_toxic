@@ -126,7 +126,7 @@ export default function Statistics({ playersList, matchList }) {
     }, [playersList])
 
 
-    if (playersList.length)
+    if (playersList.length && matchList.length)
         return (
             <div>
                 <div>
