@@ -7,7 +7,7 @@ require('dotenv').config()
 
 const matchRouter = require("./routes/matchRoute")
 
-const uri = `mongodb+srv://23maiolol:${process.env.MONGODB_PASSWORD}@fantatoxiccluster.9mquw.mongodb.net/FantaToxicDB`;
+const uri = `mongodb+srv://23maiolol:${process.env.MONGODB_PASSWORD}@fantatoxiccluster.9mquw.mongodb.net/${process.env.COLLECTION}`;
 mongoose.connect(uri, {});
 const db = mongoose.connection;
 
