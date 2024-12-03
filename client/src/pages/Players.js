@@ -14,14 +14,22 @@ import { Box } from '@mui/material';
 export default function Players({ playersList }) {
   let [selected_player, setPlayer] = useState(playersList)
 
-  function handleSearchChange(event, value) {
-
-    console.log('value', value)
-    if (value) {
-      setPlayer(playersList.filter((player) => (player.name.slice(0, value.length) === value.toString().split(" ")[0]) || (player.surname.slice(0, value.length) === value.toString().split(" ")[0]) || (player.nickname.slice(0, value.length) === value.toString().split(" ")[0])))
-    } else {
+  function handleSearchChange(event, value, reason) {
+    if (reason === 'input'){
+      if (value) {
+        setPlayer(playersList.filter((player) => {
+          return(player.name.toLowerCase().split(" ")[0].slice(0, value.length) === value.toString().toLowerCase().split(" ")[0]) || (player.surname.toLowerCase().slice(0, value.length) === value.toString().toLowerCase().split(" ")[0]) || (player.nickname.toLowerCase().slice(0, value.length) === value.toLowerCase().toString().split(" ")[0])}))
+        } else {
+        setPlayer(playersList)
+      }}
+    else if (reason==='reset'){
+      if (!(event.type==='blur'))
+        setPlayer(playersList.filter((player) => value === `${player.name} ${player.surname} (${player.nickname})`))
+      }
+    else if (reason==='clear'){
       setPlayer(playersList)
     }
+    
   }
 
   if (playersList.length > 0)
@@ -51,8 +59,7 @@ export default function Players({ playersList }) {
                 let player_link = `/${player._id}`
                 return (
                   <TableRow
-                    key={player.name}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  key={player._id.toString()}
                   >
                     <TableCell align="center"><a href={player_link}>{player.name} {player.surname}</a></TableCell>
                     <TableCell align="center"><a href={player_link}>{player.nickname}</a></TableCell>

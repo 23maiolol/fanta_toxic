@@ -67,14 +67,14 @@ function App() {
 
   useEffect(() => {
     if (!matchList)
-      axios.get(`${process.env.REACT_APP_ENDPOINT}/match/list`).then(response => { console.log(response.data); setMatchList(response.data) }).catch(e => setE(true))
+      axios.get(`${process.env.REACT_APP_ENDPOINT}/match/list`).then(response => {setMatchList(response.data) }).catch(e => setE(true))
     if (!playersList)
-      axios.get(`${process.env.REACT_APP_ENDPOINT}/player/list`).then(response => { console.log(response.data); setPlayerList(response.data) }).catch(e => setE(true))
+      axios.get(`${process.env.REACT_APP_ENDPOINT}/player/list`).then(response => {setPlayerList(response.data) }).catch(e => setE(true))
     if (playersList && matchList)
       setLoading(false)
     else
       setLoading(true)
-    console.log(playersList)
+
   }, [playersList, matchList, e, loading])
 
   if (e)

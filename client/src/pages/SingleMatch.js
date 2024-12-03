@@ -71,7 +71,7 @@ export default function SingleMatch({ match }) {
                                             <span className="mprop mtag">Voto:</span><span className="mprop mvalue vote">{report.vote}</span>
                                         </Box>
                                         <Box sx={{ display: 'flex'}}>
-                                            <span className="mprop mtag">Commento:</span><span className="mprop mvalue comment"></span>
+                                            <span className="mprop mtag">Commento:</span><span className="mprop mvalue comment">{report.comment}</span>
                                         </Box>
                                     </Box>
 

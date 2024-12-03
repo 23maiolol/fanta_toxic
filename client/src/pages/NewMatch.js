@@ -64,7 +64,7 @@ export default function NewMatch({ playersList }) {
     }
 
     function setVote(value, reason, currPlayer, setPlayerFunction) {
-        console.log(value)
+        console.log(currPlayer)
         if (reason === 'clear') {
             return setPlayerFunction({ ...currPlayer, vote: null })
         } else {
@@ -73,6 +73,7 @@ export default function NewMatch({ playersList }) {
     }
 
     function setComment(value, currPlayer, setPlayerFunction) {
+        console.log(currPlayer)
         return setPlayerFunction({ ...currPlayer, comment: value })
     }
 
@@ -107,7 +108,7 @@ export default function NewMatch({ playersList }) {
     function handleSubmit(e) {
         e.preventDefault()
         let matchPlayers = [player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11, player12, player13, player14]
-        
+        console.log(matchPlayers)
         let hPassword = passwToHash(password)
         if (!mvp)
             alert("Inserisci l'MVP della giornata!")
