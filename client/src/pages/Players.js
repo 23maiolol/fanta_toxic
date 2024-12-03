@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,21 +15,23 @@ export default function Players({ playersList }) {
   let [selected_player, setPlayer] = useState(playersList)
 
   function handleSearchChange(event, value, reason) {
-    if (reason === 'input'){
+    if (reason === 'input') {
       if (value) {
         setPlayer(playersList.filter((player) => {
-          return(player.name.toLowerCase().split(" ")[0].slice(0, value.length) === value.toString().toLowerCase().split(" ")[0]) || (player.surname.toLowerCase().slice(0, value.length) === value.toString().toLowerCase().split(" ")[0]) || (player.nickname.toLowerCase().slice(0, value.length) === value.toLowerCase().toString().split(" ")[0])}))
-        } else {
+          return (player.name.toLowerCase().split(" ")[0].slice(0, value.length) === value.toString().toLowerCase().split(" ")[0]) || (player.surname.toLowerCase().slice(0, value.length) === value.toString().toLowerCase().split(" ")[0]) || (player.nickname.toLowerCase().slice(0, value.length) === value.toLowerCase().toString().split(" ")[0])
+        }))
+      } else {
         setPlayer(playersList)
-      }}
-    else if (reason==='reset'){
-      if (!(event.type==='blur'))
-        setPlayer(playersList.filter((player) => value === `${player.name} ${player.surname} (${player.nickname})`))
       }
-    else if (reason==='clear'){
+    }
+    else if (reason === 'reset') {
+      if (!(event.type === 'blur'))
+        setPlayer(playersList.filter((player) => value === `${player.name} ${player.surname} (${player.nickname})`))
+    }
+    else if (reason === 'clear') {
       setPlayer(playersList)
     }
-    
+
   }
 
   if (playersList.length > 0)
@@ -59,7 +61,7 @@ export default function Players({ playersList }) {
                 let player_link = `/${player._id}`
                 return (
                   <TableRow
-                  key={player._id.toString()}
+                    key={player._id.toString()}
                   >
                     <TableCell align="center"><a href={player_link}>{player.name} {player.surname}</a></TableCell>
                     <TableCell align="center"><a href={player_link}>{player.nickname}</a></TableCell>

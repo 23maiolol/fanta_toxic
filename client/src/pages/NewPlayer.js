@@ -26,8 +26,8 @@ export default function NewPlayer({ player }) {
         return str[0].toUpperCase() + str.slice(1);
     }
 
-    function passwToHash(psswrd){
-        let txtHash = new jsSHA('SHA-1', 'TEXT', {encoding: 'UTF8'})
+    function passwToHash(psswrd) {
+        let txtHash = new jsSHA('SHA-1', 'TEXT', { encoding: 'UTF8' })
         txtHash.update(psswrd)
         return txtHash.getHash('HEX')
     }
@@ -64,17 +64,17 @@ export default function NewPlayer({ player }) {
                     data: player
                 }
             )
-            .then(data=>{
-                alert("Giocatore aggiunto Correttamente")
-                window.location.reload()
-            })
-            .catch(error => {
-                if (error.status === 409)
-                    return alert('Attenzione: Esiste giá un giocatore con queste informazioni');
-                else
-                    return alert('Errore nel salvataggio della partita riprovare piu tardi')
-            });
-            
+                .then(data => {
+                    alert("Giocatore aggiunto Correttamente")
+                    window.location.reload()
+                })
+                .catch(error => {
+                    if (error.status === 409)
+                        return alert('Attenzione: Esiste giá un giocatore con queste informazioni');
+                    else
+                        return alert('Errore nel salvataggio della partita riprovare piu tardi')
+                });
+
         }
     }
 
@@ -124,7 +124,7 @@ export default function NewPlayer({ player }) {
                     </Box>
                 </div>
                 <div id='plpassword'>
-                    <Input value={password} onChange={(e) => setPassword(e.target.value)} type='password' placeholder='Password' sx={{ width: '70%', marginTop:{xs:'5%', s:'5%', md:'2%', l:'2%', xl:'2%'} }}></Input>
+                    <Input value={password} onChange={(e) => setPassword(e.target.value)} type='password' placeholder='Password' sx={{ width: '70%', marginTop: { xs: '5%', s: '5%', md: '2%', l: '2%', xl: '2%' } }}></Input>
                 </div>
                 <div id='button-container'>
                     <Button variant="contained" onClick={e => handleSubmit(e)}>Aggiungi Giocatore</Button>

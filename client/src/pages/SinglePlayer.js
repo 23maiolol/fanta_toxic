@@ -35,7 +35,7 @@ export default function SinglePlayer({ player }) {
                 <NavBar></NavBar>
             </div>
             <div id="grid-cont">
-                <Grid container spacing={2} columns={{ xs: 1, sm: 1, md: 12, l:12 }}>
+                <Grid container spacing={2} columns={{ xs: 1, sm: 1, md: 12, l: 12 }}>
                     <Grid xs={3} sx={{ display: 'flex', flexDirection: 'column', borderRadius: '10px', borderColor: 'lightgrey', borderWidth: '2px', margin: '2%' }}>
                         <Paper elevation={5} width='100%' height='100%'>
                             <Box sx={{ display: 'flex', justifyContent: 'center', fontWeight: '800', marginBottom: '2%', marginTop: '2%', fontSize: 'larger' }}>Info Giocatore</Box>
@@ -53,14 +53,14 @@ export default function SinglePlayer({ player }) {
                                 <Box sx={{ display: 'flex' }}>
                                     <span className="prop tag">Ruolo:</span><span className="prop value"> {player.role}</span>
                                 </Box>
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', marginBottom:'5%' }}>
+                                <Box sx={{ display: 'flex', flexWrap: 'wrap', marginBottom: '5%' }}>
                                     <span className="prop tag">Lista Partite:</span>
                                     <ol>
                                         {player.matchList.map((match) => {
-                                            let match_link
-                                            if (match)
-                                                match_link = `/${match.date}`
-                                            return <li className="item" key={match.date}><a href={match_link}>{match.date}</a></li>
+                                            if (match) {
+                                                let match_link = `/${match.date}`
+                                                return <li className="item" key={match.date}><a href={match_link}>{match.date}</a></li>
+                                            }
                                         }
                                         )}
                                     </ol>

@@ -1,5 +1,5 @@
 import '../style/InitPage.css'
-import { Box, Button, Typography} from "@mui/material"
+import { Box, Button, Typography } from "@mui/material"
 
 export default function InitPage() {
     return <div>
