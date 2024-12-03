@@ -74,6 +74,7 @@ function App() {
       setLoading(false)
     else
       setLoading(true)
+    console.log(playersList)
   }, [playersList, matchList, e, loading])
 
   if (e)
