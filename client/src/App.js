@@ -112,6 +112,7 @@ function App() {
               <Route path='/statistics' element={<Statistics playersList={playersList} matchList={matchList} ></Statistics>}></Route>
               <Route path='/new_match' element={<NewMatch playersList={playersList}></NewMatch>}></Route>
               <Route path='/new_player' element={<NewPlayer></NewPlayer>}></Route>
+              <Route path='*' element={<InitPage></InitPage>}></Route>
             </Routes>
           </Router>
         </JoyCssVarsProvider>
