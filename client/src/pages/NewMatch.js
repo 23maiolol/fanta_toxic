@@ -45,6 +45,7 @@ export default function NewMatch({ playersList }) {
     let [mvp, setMVP] = useState(null)
     let [toxic, setToxic] = useState(null)
     let [matchDay, setMatchDay] = useState(dayjs.utc());
+    let [currMatchPlayers, setMatchPlayers] = useState([]);
 
     function valueToId(value) {
         let idL = playersList.filter(player => player.nickname === (value.split('(').slice(-1)[0].slice(0, -1)))
@@ -55,12 +56,19 @@ export default function NewMatch({ playersList }) {
         return 0
     }
 
+    function checkDuplicate(value) {
+        for (let el of currMatchPlayers) {
+            if (el === value) return true
+        }
+        return false
+    }
+
     function setPlayer(value, reason, currPlayer, setPlayerFunction) {
         if (reason === 'clear') {
-            return setPlayerFunction({ ...currPlayer, completeName: null, playerId: null })
-        } else {
-            return setPlayerFunction({ ...currPlayer, completeName: value, playerId: valueToId(value) })
+            return setMatchPlayers(currMatchPlayers.filter((complName) => complName !== currPlayer.completeName)), setPlayerFunction({ ...currPlayer, completeName: null, playerId: null })
         }
+        if (checkDuplicate(value)) return alert("Il player inserito è già presente!")
+        else return setPlayerFunction({ ...currPlayer, completeName: value, playerId: valueToId(value) }), setMatchPlayers([...currMatchPlayers, value])
     }
 
     function setVote(value, reason, currPlayer, setPlayerFunction) {
@@ -106,6 +114,7 @@ export default function NewMatch({ playersList }) {
     function handleSubmit(e) {
         e.preventDefault()
         let matchPlayers = [player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11, player12, player13, player14]
+        console.log(matchPlayers)
         let hPassword = passwToHash(password)
         if (!mvp)
             alert("Inserisci l'MVP della giornata!")
