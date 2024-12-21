@@ -36,11 +36,11 @@ export default function SingleMatch({ match }) {
 
                         <Divider variant="" textAlign='left' sx={{ color: 'goldenrod', fontWeight: '800' }}>MVP</Divider>
                         <Box sx={{ display: 'flex', marginBottom: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' }, marginTop: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' }, marginLeft: '1.5%', justifyContent: 'left' }}>
-                            <span className="prop value comment"><a href={`/${match.mvp.name.toLowerCase()}_${match.mvp.surname.toLowerCase()}`}>{match.mvp.name} {match.mvp.surname}</a></span>
+                            <span className="prop value comment"><a href={`/${match.mvp._id}`}>{match.mvp.name} {match.mvp.surname}</a></span>
                         </Box>
                         <Divider variant="" textAlign='left' sx={{ color: 'purple', fontWeight: '800' }}>Toxic</Divider>
                         <Box sx={{ display: 'flex', marginBottom: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' }, marginTop: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' }, marginLeft: '1.5%', justifyContent: 'left' }}>
-                            <span className="prop value comment"><a href={`/${match.toxic.name.toLowerCase()}_${match.toxic.surname.toLowerCase()}`}>{match.toxic.name} {match.toxic.surname}</a></span>
+                            <span className="prop value comment"><a href={`/${match.toxic._id}`}>{match.toxic.name} {match.toxic.surname}</a></span>
                         </Box>
                         <Divider variant="" textAlign='left' sx={{ fontWeight: '800', color: 'primary.700' }}>Giocatori</Divider>
                         {match.reports.map((report, index) => {

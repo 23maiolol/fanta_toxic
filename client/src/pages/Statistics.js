@@ -11,6 +11,8 @@ export default function Statistics({ playersList, matchList }) {
     let [toxic, setToxic] = useState('')
     let [mvp, setMvp] = useState('')
 
+    
+
     function FindToxic(pList) {
         let toxic = pList[0]
         for (let player of pList.slice(1,)) {
