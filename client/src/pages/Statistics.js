@@ -35,7 +35,7 @@ export default function Statistics({ playersList, matchList }) {
 
 
     function calcAv(player) {
-        if (player.votes.length > 0) {
+        if (player.votes.length > 1) {
             let av = Math.round((player.votes.reduce((acc, curr) => acc + curr) / player.votes.length) * 100) / 100
             return { ...player, votes: av }
         }
@@ -120,7 +120,7 @@ export default function Statistics({ playersList, matchList }) {
 
     useEffect(() => {
         let updPlayerList = playersList.map((player) => calcAv(player))
-        updPlayerList = updPlayerList.filter((player) => player.votes > 1)  // recuper i player che hanno voti e elimino player senza voti
+        updPlayerList = updPlayerList.filter((player) => player.votes > 0)  // recuper0 i player che hanno piu di un voto e elimino player senza voti
         return (setWorst(FindMin5(updPlayerList)),
             setTop(FindMax5(updPlayerList)),
             setToxic(FindToxic(playersList)),
