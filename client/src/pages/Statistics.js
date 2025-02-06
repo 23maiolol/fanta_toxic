@@ -120,7 +120,7 @@ export default function Statistics({ playersList, matchList }) {
 
     useEffect(() => {
         let updPlayerList = playersList.map((player) => calcAv(player))
-        updPlayerList = updPlayerList.filter((player) => player.votes !== 0)  // recuper i player che hanno voti e elimino player senza voti
+        updPlayerList = updPlayerList.filter((player) => player.votes > 1)  // recuper i player che hanno voti e elimino player senza voti
         return (setWorst(FindMin5(updPlayerList)),
             setTop(FindMax5(updPlayerList)),
             setToxic(FindToxic(playersList)),
