@@ -15,7 +15,8 @@ const matchesSchema = new mongoose.Schema({
  reports: [{
     type: mongoose.Schema.Types.ObjectId,
     ref:'Reports'
- }]
+ }],
+ matchComment: String
 });
 
 const Matches = mongoose.model('Matches', matchesSchema)

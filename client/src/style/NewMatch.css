@@ -44,6 +44,7 @@ textarea {
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
+    margin-bottom: '3%';
 }
 
 .mvp {

@@ -34,6 +34,7 @@ export default function Statistics({ playersList, matchList }) {
     }
 
 
+    // setto a 0 la media dei giocatori che hanno 1 voto o meno per inserirli nelle statistiche globali
     function calcAv(player) {
         if (player.votes.length > 1) {
             let av = Math.round((player.votes.reduce((acc, curr) => acc + curr) / player.votes.length) * 100) / 100

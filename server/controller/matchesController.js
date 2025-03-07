@@ -29,6 +29,7 @@ exports.retrieveAllMatches = (req, res) => {
                         date: match.date,
                         mvp: match.mvp,
                         toxic: match.toxic,
+                        matchComment: match.matchComment,
                         reports: match.reports.map((report) => {
                             return {
                                 _id: report._id,
@@ -52,6 +53,7 @@ exports.createMatch = (req, res) => {
                 date: req.body.date,
                 mvp: req.body.mvp,
                 toxic: req.body.toxic,
+                matchComment: req.body.matchComment,
                 reports: []
             }).then(match => {
                 Players.findByIdAndUpdate(match.toxic, { $push: { toxic: match._id } }).then(data => console.log('toxic inserted'))
@@ -70,7 +72,7 @@ exports.createMatch = (req, res) => {
                     })
 
                 })
-            }).then(data => res.send(200))
+            }).then(data => res.sendStatus(200))
         else 
             return res.sendStatus(409)
     })

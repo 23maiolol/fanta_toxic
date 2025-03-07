@@ -8,6 +8,7 @@ import '../style/SingleMatch.css'
 export default function SingleMatch({ match }) {
 
     useEffect(() => {
+        console.log(match.matchComment)
         let elmnts = document.querySelectorAll('.vote')
         console.log(elmnts)
         elmnts.forEach((el) => {
@@ -36,12 +37,22 @@ export default function SingleMatch({ match }) {
 
                         <Divider variant="" textAlign='left' sx={{ color: 'goldenrod', fontWeight: '800' }}>MVP</Divider>
                         <Box sx={{ display: 'flex', marginBottom: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' }, marginTop: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' }, marginLeft: '1.5%', justifyContent: 'left' }}>
-                            <span className="prop value comment"><a href={`/${match.mvp._id}`}>{match.mvp.name} {match.mvp.surname}</a></span>
+                            <span className="prop value comment"><a href={`/${match.mvp._id}`}>{match.mvp.name} {match.mvp.surname}</a> ({match.mvp.nickname})</span>
                         </Box>
                         <Divider variant="" textAlign='left' sx={{ color: 'purple', fontWeight: '800' }}>Toxic</Divider>
                         <Box sx={{ display: 'flex', marginBottom: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' }, marginTop: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' }, marginLeft: '1.5%', justifyContent: 'left' }}>
-                            <span className="prop value comment"><a href={`/${match.toxic._id}`}>{match.toxic.name} {match.toxic.surname}</a></span>
+                            <span className="prop value comment"><a href={`/${match.toxic._id}`}>{match.toxic.name} {match.toxic.surname}</a> ({match.toxic.nickname})</span>
                         </Box>
+                        {(() => {
+                            if (match.matchComment){
+                                return <Box sx={{ marginBottom: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' }, marginTop: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' } }}>
+                                    <Divider variant="" textAlign='left' sx={{ fontWeight: '800', color: '' }}>Commento Partita</Divider>
+                                    <Box sx={{ display: 'flex', marginLeft: '4%', paddingRight: '2%'}}>
+                                        <span className="mprop mvalue mcomment">{match.matchComment}</span>
+                                    </Box>
+                                </Box>
+                            }
+                        })()}
                         <Divider variant="" textAlign='left' sx={{ fontWeight: '800', color: 'primary.700' }}>Giocatori</Divider>
                         {match.reports.map((report, index) => {
                             let player_link = `/${report.player._id}`
@@ -49,7 +60,7 @@ export default function SingleMatch({ match }) {
                                 return <Box key={index} sx={{ marginBottom: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' }, marginTop: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' } }}>
                                     <Box sx={{ marginLeft: '4%', paddingRight: '2%' }}>
                                         <Box sx={{ display: 'flex' }}>
-                                            <span className="mprop mtag">Nome:</span><span className="mprop mvalue"><a href={player_link}>{report.player.name} {report.player.surname}</a></span>
+                                            <span className="mprop mtag">Nome:</span><span className="mprop mvalue"><a href={player_link}>{report.player.name} {report.player.surname} </a> ({report.player.nickname})</span>
                                         </Box>
                                         <Box sx={{ display: 'flex' }}>
                                             <span className="mprop mtag">Voto:</span><span className="mprop mvalue vote">{report.vote}</span>
@@ -65,7 +76,7 @@ export default function SingleMatch({ match }) {
                                     <Divider variant="" textAlign='left' sx={{ color: 'darkblue', fontWeight: '800' }}></Divider>
                                     <Box sx={{ marginLeft: '4%', paddingRight: '2%' }}>
                                         <Box sx={{ display: 'flex', marginTop: { xs: '4%', s: '4%', md: '4%', l: '1%', xl: '1%' } }}>
-                                            <span className="mprop mtag">Nome:</span><span className="mprop mvalue"><a href={player_link}>{report.player.name} {report.player.surname}</a></span>
+                                            <span className="mprop mtag">Nome:</span><span className="mprop mvalue"><a href={player_link}>{report.player.name} {report.player.surname}</a> ({report.player.nickname})</span>
                                         </Box>
                                         <Box sx={{ display: 'flex' }}>
                                             <span className="mprop mtag">Voto:</span><span className="mprop mvalue vote">{report.vote}</span>

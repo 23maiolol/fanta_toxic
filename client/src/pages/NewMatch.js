@@ -27,25 +27,26 @@ export default function NewMatch({ playersList }) {
         vote: null,
         comment: ''
     }
-    let [password, setPassword] = useState('')
-    let [player1, setPlayer1] = useState(playerDefault)
-    let [player2, setPlayer2] = useState(playerDefault)
-    let [player3, setPlayer3] = useState(playerDefault)
-    let [player4, setPlayer4] = useState(playerDefault)
-    let [player5, setPlayer5] = useState(playerDefault)
-    let [player6, setPlayer6] = useState(playerDefault)
-    let [player7, setPlayer7] = useState(playerDefault)
-    let [player8, setPlayer8] = useState(playerDefault)
-    let [player9, setPlayer9] = useState(playerDefault)
-    let [player10, setPlayer10] = useState(playerDefault)
-    let [player11, setPlayer11] = useState(playerDefault)
-    let [player12, setPlayer12] = useState(playerDefault)
-    let [player13, setPlayer13] = useState(playerDefault)
-    let [player14, setPlayer14] = useState(playerDefault)
-    let [mvp, setMVP] = useState(null)
-    let [toxic, setToxic] = useState(null)
-    let [matchDay, setMatchDay] = useState(dayjs.utc());
-    let [currMatchPlayers, setMatchPlayers] = useState([]);
+    const [password, setPassword] = useState('')
+    const [player1, setPlayer1] = useState(playerDefault)
+    const [player2, setPlayer2] = useState(playerDefault)
+    const [player3, setPlayer3] = useState(playerDefault)
+    const [player4, setPlayer4] = useState(playerDefault)
+    const [player5, setPlayer5] = useState(playerDefault)
+    const [player6, setPlayer6] = useState(playerDefault)
+    const [player7, setPlayer7] = useState(playerDefault)
+    const [player8, setPlayer8] = useState(playerDefault)
+    const [player9, setPlayer9] = useState(playerDefault)
+    const [player10, setPlayer10] = useState(playerDefault)
+    const [player11, setPlayer11] = useState(playerDefault)
+    const [player12, setPlayer12] = useState(playerDefault)
+    const [player13, setPlayer13] = useState(playerDefault)
+    const [player14, setPlayer14] = useState(playerDefault)
+    const [mvp, setMVP] = useState(null)
+    const [toxic, setToxic] = useState(null)
+    const [matchDay, setMatchDay] = useState(dayjs.utc());
+    const [currMatchPlayers, setMatchPlayers] = useState([]);
+    const [matchComment, setMatchComment] = useState('')
 
     function valueToId(value) {
         let idL = playersList.filter(player => player.nickname === (value.split('(').slice(-1)[0].slice(0, -1)))
@@ -126,6 +127,8 @@ export default function NewMatch({ playersList }) {
             alert("Il toxic inserito non ha partecipato alla partita!")
         else if (!full(matchPlayers))
             alert("Non hai completato l'inserimento di tutti i giocatori!")
+        else if (!matchComment)
+            alert("Inserisci il commento partita!")
         else if (hPassword !== process.env.REACT_APP_MATCH_PASSWORD)
             alert("Password incorretta!")
         else {
@@ -137,6 +140,7 @@ export default function NewMatch({ playersList }) {
                 date: date,
                 mvp: valueToId(mvp),
                 toxic: valueToId(toxic),
+                matchComment: matchComment,
                 reports: matchPlayers,
                 playersList: matchPlayersId,
             }
@@ -796,7 +800,7 @@ export default function NewMatch({ playersList }) {
                             onChange={(event, value, reason) => handleMVPorToxic(value, reason, setMVP)}
                             placeholder="Cerca Giocatore"
                             options={playersList.map((player) => (`${player.name} ${player.surname} (${player.nickname})`))}
-                            sx={{ maxWidth: 300, minWidth: 75 }}>
+                            sx={{ maxWidth: 300, minWidth: 75, marginBottom:'10%'}}>
                         </Autocomplete>
                     </div>
                     <div className='toxic'>
@@ -813,12 +817,30 @@ export default function NewMatch({ playersList }) {
                         </Autocomplete>
                     </div>
                 </div>
+                <div>
+                    <InputLabel sx={{ borderBottom: 'solid', borderBottomWidth: '1px', marginBottom:'2%', marginTop:'4%' }}>Commento Partita</InputLabel>
+                    <TextField
+                            value={matchComment}
+                            onChange={(event) => setMatchComment(event.target.value)}
+                            sx={{
+                                width: '100%', minWidth: '250px', marginTop: {
+                                    xs: 2
+                                },
+                                marginBottom: {
+                                    xs: 2
+                                }, backgroundColor: 'white', fontSize: 'smaller'
+                            }}
+                            rows={2}
+                            multiline
+                            placeholder='Inserisci Commento Partita'
+                        ></TextField>
+                </div>
                 <div id='date-picker'>
                     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="it">
                         <DatePicker
                             sx={{ color: 'white' }}
                             timezone='Europe/Rome'
-                            label='Giorno della partita'
+                            label='Data Partita'
                             value={matchDay}
                             onChange={(value) => setMatchDay(value)}>
                         </DatePicker>
