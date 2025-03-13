@@ -23,6 +23,12 @@ export default function BChart({ avList, playerList, color }) {
         height={300}
         layout='horizontal'
         margin={{ left: 100 }}
+        barLabel={'value'}
+        sx={{
+            '& .MuiBarLabel-root': {
+              fontWeight: '800',
+            },
+        }}
         >
         </BarChart>
 

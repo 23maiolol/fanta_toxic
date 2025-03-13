@@ -18,6 +18,7 @@ export default function LChart({ votes, dates }) {
                 max: 10
             }]}
             height={400}
+            grid={{horizontal: true}}
         >
 
         </LineChart>
