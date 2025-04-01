@@ -7,7 +7,8 @@ import {
 } from "react-router-dom";
 import SinglePlayer from './pages/SinglePlayer';
 import NewPlayer from './pages/NewPlayer';
-import NewMatch from './pages/NewMatch';
+import NewMatch7 from './pages/NewMatch7';
+import NewMatch8 from './pages/NewMatch8';
 import Matches from './pages/Matches';
 import SingleMatch from './pages/SingleMatch';
 import Statistics from './pages/Statistics';
@@ -27,6 +28,7 @@ import {
   ThemeProvider,
   THEME_ID as MATERIAL_THEME_ID,
 } from "@mui/material/styles";
+import MatchTypeChoice from './pages/MatchTypeChoice';
 
 
 
@@ -110,7 +112,9 @@ function App() {
               })
               }
               <Route path='/statistics' element={<Statistics playersList={playersList} matchList={matchList} ></Statistics>}></Route>
-              <Route path='/new_match' element={<NewMatch playersList={playersList}></NewMatch>}></Route>
+              <Route path='/new_match_7' element={<NewMatch7 playersList={playersList}></NewMatch7>}></Route>
+              <Route path='/new_match_8' element={<NewMatch8 playersList={playersList}></NewMatch8>}></Route>
+              <Route path='/match_choice' element={<MatchTypeChoice></MatchTypeChoice>}></Route>
               <Route path='/new_player' element={<NewPlayer></NewPlayer>}></Route>
               <Route path='*' element={<InitPage></InitPage>}></Route>
             </Routes>

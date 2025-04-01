@@ -1,7 +1,7 @@
 import '../style/NewMatch.css'
 import NavBar from "../components/NavBar";
-import { Input, Autocomplete } from "@mui/joy";
-import { Button, InputLabel } from "@mui/material";
+import { Input, Autocomplete, Radio } from "@mui/joy";
+import { Button, InputLabel, RadioGroup, FormControl, FormControlLabel, FormLabel } from "@mui/material";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers"
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useState } from "react";
@@ -18,7 +18,7 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.locale(it)
 
-export default function NewMatch({ playersList }) {
+export default function NewMatch8({ playersList }) {
     let votesList = [1, 2, 3, 3.5, 4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 8, 8.25, 8.5, 8.75, 9, 9.25, 9.5, 9.75, 10]
 
     const playerDefault = {
@@ -799,7 +799,7 @@ export default function NewMatch({ playersList }) {
                             onChange={(event, value, reason) => handleMVPorToxic(value, reason, setMVP)}
                             placeholder="Cerca Giocatore"
                             options={playersList.map((player) => (`${player.name} ${player.surname} (${player.nickname})`))}
-                            sx={{ maxWidth: 300, minWidth: 75, marginBottom:'10%'}}>
+                            sx={{ maxWidth: 300, minWidth: 75, marginBottom: '10%' }}>
                         </Autocomplete>
                     </div>
                     <div className='toxic'>
@@ -817,23 +817,24 @@ export default function NewMatch({ playersList }) {
                     </div>
                 </div>
                 <div>
-                    <InputLabel sx={{ borderBottom: 'solid', borderBottomWidth: '1px', marginBottom:'2%', marginTop:'4%' }}>Commento Partita</InputLabel>
+                    <InputLabel sx={{ borderBottom: 'solid', borderBottomWidth: '1px', marginBottom: '2%', marginTop: '4%' }}>Commento Partita</InputLabel>
                     <TextField
-                            value={matchComment}
-                            onChange={(event) => setMatchComment(event.target.value)}
-                            sx={{
-                                width: '100%', minWidth: '250px', marginTop: {
-                                    xs: 2
-                                },
-                                marginBottom: {
-                                    xs: 2
-                                }, backgroundColor: 'white', fontSize: 'smaller'
-                            }}
-                            rows={2}
-                            multiline
-                            placeholder='Inserisci Commento Partita'
-                        ></TextField>
+                        value={matchComment}
+                        onChange={(event) => setMatchComment(event.target.value)}
+                        sx={{
+                            width: '100%', minWidth: '250px', marginTop: {
+                                xs: 2
+                            },
+                            marginBottom: {
+                                xs: 2
+                            }, backgroundColor: 'white', fontSize: 'smaller'
+                        }}
+                        rows={2}
+                        multiline
+                        placeholder='Inserisci Commento Partita'
+                    ></TextField>
                 </div>
+
                 <div id='date-picker'>
                     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="it">
                         <DatePicker
@@ -855,4 +856,4 @@ export default function NewMatch({ playersList }) {
         </div>
 
     )
-}//<Input value={player1.vote} onChange={(e,v)=>{setVote(e.target.value, player1, setPlayer1)}}placeholder='voto' sx={{width:75}} required></Input>
+}

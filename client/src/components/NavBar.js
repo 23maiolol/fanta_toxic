@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 const pages = [{ name: 'Giocatori', p_link: '/players_menu' },
 { name: 'Partite', p_link: '/match_menu' },
 { name: 'Statistiche', p_link: '/statistics' },
-{ name: 'Nuova Partita', p_link: '/new_match' },
+{ name: 'Nuova Partita', p_link: '/match_choice' },
 { name: 'Nuovo Giocatore', p_link: '/new_player' }];
 
 
@@ -94,7 +94,7 @@ export default function NavBar() {
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 2,
+              mr: 10,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
